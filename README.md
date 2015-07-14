@@ -23,6 +23,8 @@ A python script that takes the following commandline arguments:
 4. "From" column name
 5. "To" column name
 
+*Date columns must be in YYYY-MM-DD format*
+
 For example:
 
 >python fix.py "ID" "source.csv" "final.csv" "ValidFrom" "ValidTo"
