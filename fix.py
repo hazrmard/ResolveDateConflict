@@ -60,7 +60,7 @@ while cond:
         else:
             w.writerows(currRows)              # storing processed result
         count += len(currRows)
-        print str(count) + " records processed.\r"
+        print "\r" + str(count) + " records processed.",
         currId = nextRow[pki]            # creating next id group
         currRows = [nextRow]
         continue

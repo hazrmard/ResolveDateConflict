@@ -12,8 +12,6 @@ from datetime import datetime as dt, timedelta as td
 tformat = '%Y-%m-%d'
 
 def fixit(batch, pki, dfi, dti):
-    if len(batch) == 1:     # single rows need no processing
-        return batch, 0
     count = 0               # resetting number of fixes
     cond = True             # setting loop condition to true
     i = 0                   # setting batch iterator to 0
