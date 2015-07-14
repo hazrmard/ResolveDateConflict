@@ -4,10 +4,10 @@ Resolve date conflicts arising from SQL-type joins on records.
 ## Description:
 One way of tracking changes in a database is to take regular snapshots of the entire database and append the snapshot date. However this approach is space-inefficient. A way around that is to assign validity dates to records for the duration they remain static. It can be done by:
 
-1. Sort records byh primary key and snapshot date
-2. Group records by primary key and data fields
-3. Sample first and last records from each group
-4. Join two sample groups on primary key and data fields
+1. Sorting records by primary key and snapshot date
+2. Grouping records by primary key and data fields
+3. Sampling first and last records from each group
+4. Joining two sample groups on primary key and data fields
   - The Snapshot column of the first sample becomes the "From" date
   - The Snapshot column of the last sample becomes the "To" date
 
