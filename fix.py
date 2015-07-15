@@ -8,18 +8,18 @@ __author__ = 'Ibrahim'
 #   Assuming data is sorted by primary key and 'valid from' date in ascending order.
 
 import sys      # to capture command line arguments
-import csv      # to load csv file from workflow
+import csv as c      # to load csv file from workflow
 import fixbatch  # supplementary function for fixing continuity in batches by id
 import os
 from datetime import datetime  # importing datetime function
 
 start_time = datetime.now()
 
-pk = sys.argv[1]     # getting primary key from alteryx
+pk = unicode(sys.argv[1], 'utf-8')     # getting primary key from alteryx
 fp = sys.argv[2]     # getting file path from alteryx
 op = sys.argv[3]     # getting output file path
-df = sys.argv[4]     # getting 'date from' field name
-dt = sys.argv[5]     # getting 'date to' field name
+df = unicode(sys.argv[4], 'utf-8')     # getting 'date from' field name
+dt = unicode(sys.argv[5], 'utf-8')     # getting 'date to' field name
 print("Primary key is: " + pk)
 print("File path is: " + fp)
 print("File output path is: " + op)
@@ -28,12 +28,18 @@ timestamp = datetime.now().strftime("%Y_%m_%d (%H %M %S)")
 
 f = open(fp, 'rb')      # opening file for reading data
 o = open(op, 'wb')      # opening file for writing output
-if not os.path.exists(fp[:fp.rfind('\\')]+'\\logs'):
-    os.makedirs(fp[:fp.rfind('\\')]+'\\logs')
-l = open(fp[:fp.rfind('\\')] + '\\logs\\ ' + timestamp + '.txt', 'wb')   # opening log file.
-r = csv.reader(f)       # passing to csv reader
-w = csv.writer(o)       # passing output file to csv writer
+if fp.rfind('\\') == -1:
+    directory = 'logs'
+else:
+    directory = fp[:fp.rfind('\\')]+'\\logs'
+if not os.path.exists(directory):
+    os.makedirs(directory)
+l = open(directory + '\\' + timestamp + '.txt', 'wb')   # opening log file.
+r = c.reader(f)       # passing to csv reader
+w = c.writer(o)       # passing output file to csv writer
+
 header = r.next()       # obtaining header info
+header = [x.decode('utf-8-sig') for x in header]
 w.writerow(header)     # writing header to output
 pki = header.index(pk)  # getting primary key index from header
 dfi = header.index(df)
@@ -54,10 +60,12 @@ while cond:
         if len(currRows) > 1:
             result, c = fixbatch.fixit(currRows, pki, dfi, dti)   # calling fix function on current row batch
             totalfixcount += c               # tallying fixes done
+            # result = [[x.decode('utf-8') for x in record] for record in result]
             w.writerows(result)              # storing processed result
             if c != 0:                       # logging fixes done, if any
                 print >>l, str(c) + " conflicts fixed in primary key: " + currId + "\n\r"
         else:
+            # currRows = [x.decode('utf-8') for x in currRows]
             w.writerows(currRows)              # storing processed result
         count += len(currRows)
         print "\r" + str(count) + " records processed.",
