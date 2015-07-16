@@ -58,7 +58,7 @@ while cond:
         cond = False
     if nextRow[pki] != currId or cond is False:       # if next row has different primary key than current row batch
         if len(currRows) > 1:
-            result, c = fixbatch.fixit(currRows, pki, dfi, dti)   # calling fix function on current row batch
+            result, c = fixbatch.fixit(currRows, pki, dfi, dti, l)   # calling fix function on current row batch
             totalfixcount += c               # tallying fixes done
             # result = [[x.decode('utf-8') for x in record] for record in result]
             w.writerows(result)              # storing processed result
