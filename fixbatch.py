@@ -16,28 +16,24 @@ def fixit(batch, pki, dfi, dti, l):
     cond = True             # setting loop condition to true
     i = 0                   # setting batch iterator to 0
     while cond:
-        print i
         try:        # in case incoming batch has some faulty date data
             currfdate = dt.strptime(batch[i][dfi], tformat)              # assigning converted date values from batch
             currtdate = dt.strptime(batch[i][dti], tformat)
             nextfdate = dt.strptime(batch[i+1][dfi], tformat)
             nexttdate = dt.strptime(batch[i+1][dti], tformat)
         except IndexError:
-            print >>l, "Possible error in primary key: " + batch[i][pki] + "\n\r"
+            #print >>l, "Possible error in primary key: " + batch[i][pki] + "\n\r"
             return batch, count
         if currfdate > currtdate:                                    # deleting asynchronous records
-            print "Row ", i, " deleted"
             del batch[i]
             continue
         if currfdate == nextfdate:                                   # modifying overlapping records
-            print "Row ", i, " truncated and swapped"
             batch[i][dfi] = (nexttdate + td(days=1)).strftime(tformat)  # delaying current record's from date
             temp = batch[i]                                             # swapping w/ next record to preserve order
             batch[i] = batch[i+1]
             batch[i+1] = temp
             count += 1
         if nextfdate > currfdate and nexttdate < currtdate:        # splitting sandwiching records
-            print "Row ", i, " split"
             count += 1
             dupRow = batch[i][:]                                        # making copy of current row
             newtdate = (nextfdate - td(days=1)).strftime(tformat)       # assigning dates to accommodate sandwiched rec

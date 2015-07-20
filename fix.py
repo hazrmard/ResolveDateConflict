@@ -39,7 +39,7 @@ r = c.reader(f)       # passing to csv reader
 w = c.writer(o)       # passing output file to csv writer
 
 header = r.next()       # obtaining header info
-header = [x.decode('utf-8-sig') for x in header]
+header = [x.decode('utf-8-sig') for x in header]    # removing BOM characters from unicode (something I discovered)
 w.writerow(header)     # writing header to output
 pki = header.index(pk)  # getting primary key index from header
 dfi = header.index(df)
