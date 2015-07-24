@@ -1,0 +1,13 @@
+2 conflicts fixed in primary key: 1
+
+2 conflicts fixed in primary key: 2
+
+Total fixes done: 4
+
+Total records processed: 9
+
+Timestamp: 2015_07_24 (11 02 26)
+
+Runtime: 0:00:00.012000
+
+Source file: testing\workflow_testing.csv

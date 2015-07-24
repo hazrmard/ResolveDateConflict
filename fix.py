@@ -20,6 +20,10 @@ fp = sys.argv[2]     # getting file path from alteryx
 op = sys.argv[3]     # getting output file path
 df = unicode(sys.argv[4], 'utf-8')     # getting 'date from' field name
 dt = unicode(sys.argv[5], 'utf-8')     # getting 'date to' field name
+if len(sys.argv) == 7:
+    fmt = sys.argv[6]                      # getting date format
+else:
+    fmt = '%Y-%m-%d'
 print("Primary key is: " + pk)
 print("File path is: " + fp)
 print("File output path is: " + op)
@@ -58,7 +62,7 @@ while cond:
         cond = False
     if nextRow[pki] != currId or cond is False:       # if next row has different primary key than current row batch
         if len(currRows) > 1:
-            result, c = fixbatch.fixit(currRows, pki, dfi, dti, l)   # calling fix function on current row batch
+            result, c = fixbatch.fixit(currRows, pki, dfi, dti, l, fmt)   # calling fix function on current row batch
             totalfixcount += c               # tallying fixes done
             # result = [[x.decode('utf-8') for x in record] for record in result]
             w.writerows(result)              # storing processed result

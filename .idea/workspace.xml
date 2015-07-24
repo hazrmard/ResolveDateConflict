@@ -25,7 +25,7 @@
         <entry file="file://$PROJECT_DIR$/fix.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="115" selection-start-line="41" selection-start-column="115" selection-end-line="41" selection-end-column="115" />
+              <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
               <folding>
                 <element signature="e#579#630#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file leaf-file-name="fixbatch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fixbatch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6437718">
-              <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.5541619">
+              <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -56,8 +56,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/py2exe.py" />
-        <option value="$PROJECT_DIR$/fixbatch.py" />
         <option value="$PROJECT_DIR$/fix.py" />
+        <option value="$PROJECT_DIR$/fixbatch.py" />
       </list>
     </option>
   </component>
@@ -65,9 +65,10 @@
     <order />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2753" />
-    <option name="width" value="1087" />
-    <option name="height" value="1040" />
+    <option name="x" value="1911" />
+    <option name="y" value="-9" />
+    <option name="width" value="1938" />
+    <option name="height" value="1058" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -342,7 +343,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2753" y="0" width="1087" height="1040" extended-state="0" />
+    <frame x="1911" y="-9" width="1938" height="1058" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.57251906" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -388,6 +389,24 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/fix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="41" column="115" selection-start-line="41" selection-start-column="115" selection-end-line="41" selection-end-column="115" />
+          <folding>
+            <element signature="e#579#630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fixbatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -606,7 +625,7 @@
     <entry file="file://$PROJECT_DIR$/fix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="115" selection-start-line="41" selection-start-column="115" selection-end-line="41" selection-end-column="115" />
+          <caret line="30" column="58" selection-start-line="30" selection-start-column="58" selection-end-line="30" selection-end-column="58" />
           <folding>
             <element signature="e#579#630#0" expanded="true" />
           </folding>
@@ -615,8 +634,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fixbatch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6437718">
-          <caret line="47" column="18" selection-start-line="47" selection-start-column="18" selection-end-line="47" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.5541619">
+          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
           <folding />
         </state>
       </provider>

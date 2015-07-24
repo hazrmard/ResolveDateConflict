@@ -9,9 +9,9 @@ from datetime import datetime as dt, timedelta as td
 #   current row is deleted. In all cases the split row is inserted into the batch in chronological order.
 
 
-tformat = '%Y-%m-%d'
 
-def fixit(batch, pki, dfi, dti, l):
+
+def fixit(batch, pki, dfi, dti, l, tformat):
     count = 0               # resetting number of fixes
     cond = True             # setting loop condition to true
     i = 0                   # setting batch iterator to 0
@@ -40,7 +40,7 @@ def fixit(batch, pki, dfi, dti, l):
             newfdate = (nexttdate + td(days=1)).strftime(tformat)
             batch[i][dti] = newtdate
             dupRow[dfi] = newfdate
-            placeRecord(batch, dupRow, i, dfi)                          # placing record split copy in correct order
+            placeRecord(batch, dupRow, i, dfi, tformat)                          # placing record split copy in correct order
         if len(batch) - 2 <= i:                                      # exit condition
             cond = False
             continue
@@ -49,7 +49,7 @@ def fixit(batch, pki, dfi, dti, l):
     return batch, count
 
 
-def placeRecord(batch, dupRow, i, dfi):         # helper function for inserting rows in correct order
+def placeRecord(batch, dupRow, i, dfi, tformat):         # helper function for inserting rows in correct order
     while i < len(batch):
         if dt.strptime(batch[i][dfi], tformat) >= dt.strptime(dupRow[dfi], tformat):
             batch.insert(i, dupRow)
