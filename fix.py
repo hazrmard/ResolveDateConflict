@@ -1,6 +1,6 @@
 __author__ = 'Ibrahim'
 
-#   This script fixes continuity errors in the c9_migration workflows. For records that reverted to a previous state
+#   This script fixes continuity errors. For records that reverted to a previous state
 #   at a later date after some intermediate changes, the SQL join does not recognize them as a separate change. Instead
 #   they are considered a continuation of the original data and merged into one row with validity period that overlaps
 #   intermediate change periods. This script splits them into similar records but w/ different validity dates.
@@ -11,7 +11,7 @@ import sys      # to capture command line arguments
 import csv as c      # to load csv file from workflow
 import fixbatch  # supplementary function for fixing continuity in batches by id
 import os
-from datetime import datetime  # importing datetime function
+from datetime import datetime, timedelta as td
 
 start_time = datetime.now()
 
@@ -20,10 +20,14 @@ fp = sys.argv[2]     # getting file path from alteryx
 op = sys.argv[3]     # getting output file path
 df = unicode(sys.argv[4], 'utf-8')     # getting 'date from' field name
 dt = unicode(sys.argv[5], 'utf-8')     # getting 'date to' field name
-if len(sys.argv) == 7:
-    fmt = sys.argv[6]                      # getting date format
+if len(sys.argv) >= 7:
+    tformat = sys.argv[6]                      # getting date format
 else:
-    fmt = '%Y-%m-%d'
+    tformat = '%Y-%m-%d'
+if len(sys.argv) == 8:
+    exec('offset = td(' + sys.argv[7].replace(')', '') + ')')  # checking if offset present in dates
+else:
+    offset = td(days=1)                # else setting default offset
 print("Primary key is: " + pk)
 print("File path is: " + fp)
 print("File output path is: " + op)
@@ -62,9 +66,8 @@ while cond:
         cond = False
     if nextRow[pki] != currId or cond is False:       # if next row has different primary key than current row batch
         if len(currRows) > 1:
-            result, c = fixbatch.fixit(currRows, pki, dfi, dti, l, fmt)   # calling fix function on current row batch
+            result, c = fixbatch.fixit(currRows, dfi, dti, tformat, offset)   # calling fix function on batch
             totalfixcount += c               # tallying fixes done
-            # result = [[x.decode('utf-8') for x in record] for record in result]
             w.writerows(result)              # storing processed result
             if c != 0:                       # logging fixes done, if any
                 print >>l, str(c) + " conflicts fixed in primary key: " + currId + "\n\r"
