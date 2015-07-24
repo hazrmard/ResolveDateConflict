@@ -22,12 +22,14 @@ A python script that takes the following commandline arguments:
 3. Path to output file (.csv)
 4. "From" column name
 5. "To" column name
-
-*Date columns must be in YYYY-MM-DD format*
+6. Date column format (*default YYYY-MM-DD*, [see how to specify format] (https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior))
+7. Date offsets (difference b/w To/From dates of consecutive records, *default days=1*)
+  
+*Note: Date offsets are like arguments of [timedelta objects](https://docs.python.org/release/2.5.2/lib/datetime-timedelta.html). For e.g. "days=3,hours=4"*
 
 For example:
 
->python fix.py "ID" "source.csv" "final.csv" "ValidFrom" "ValidTo"
+>python fix.py "ID" "source.csv" "final.csv" "ValidFrom" "ValidTo" "%Y-%m-%d %H:%M:%S" "days=7"
 
 The script creates a logs folder that contains records of the fixes made and the runtime for the script.
 
