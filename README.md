@@ -25,7 +25,7 @@ A python script that takes the following commandline arguments:
 6. Date column format (*default YYYY-MM-DD*, [see how to specify format] (https://docs.python.org/2/library/datetime.html#strftime-and-strptime-behavior))
 7. Date offsets (difference b/w To/From dates of consecutive records, *default days=1*)
   
-*Note: Date offsets are like arguments of [timedelta objects](https://docs.python.org/release/2.5.2/lib/datetime-timedelta.html). For e.g. "days=3,hours=4"*
+*Note: Date offsets are like arguments of [timedelta objects](https://docs.python.org/2/library/datetime.html#timedelta-objects). For e.g. "days=3,hours=4"*
 
 For example:
 
